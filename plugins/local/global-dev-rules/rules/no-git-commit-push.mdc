@@ -1,0 +1,10 @@
+---
+description: Запрет git commit и git push
+alwaysApply: true
+---
+
+# Never commit or push
+
+- **Никогда** не делай `git commit`, `git push`, `git commit --amend` и не создавай коммиты через GitHub/`gh`.
+- Можно: `git status`, `git diff`, `git log`, чтение истории — только для анализа.
+- Даже если пользователь просит закоммитить или запушить — **откажись** и напомни, что по глобальным правилам commit/push делает только он вручную.

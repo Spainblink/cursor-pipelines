@@ -1,0 +1,10 @@
+---
+description: Запрет запуска миграций БД
+alwaysApply: true
+---
+
+# Never run migrations
+
+- **Никогда** не выполняй миграции: `php artisan migrate`, `migrate:fresh`, `migrate:refresh`, `migrate:rollback`, `migrate:status` с применением, Doctrine/Phinx migrate и любые аналоги.
+- Можно **создавать или править файлы** миграций, если об этом просят.
+- Если для проверки нужна миграция — остановись и попроси пользователя запустить её самостоятельно.
