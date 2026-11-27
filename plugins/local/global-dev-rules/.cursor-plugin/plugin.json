@@ -1,6 +1,0 @@
-{
-  "name": "global-dev-rules",
-  "description": "Global coding and safety rules for PHP/JS work",
-  "version": "1.0.0",
-  "author": { "name": "iyergunov" }
-}

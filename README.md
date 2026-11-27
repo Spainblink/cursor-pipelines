@@ -1,56 +1,63 @@
-# cursor-php-js-pipeline
+# cursor-pipelines
 
-Личный набор глобальных настроек Cursor для стека **PHP + JS/TS**:
+Личные глобальные пайплайны Cursor. Каждый стек — папка в `pipelines/`.
 
-- роли: `architecture-analyst` → `implementer` → `tester` → `code-reviewer`
-- команда: `/php-js-pipeline`
-- правила: PHPDoc RU / PSR, no migrations, no commit/push, review-rework
+Сейчас:
 
+| Папка | Стек | Команда |
+|---|---|---|
+| `pipelines/php-js/` | PHP + JS/TS | `/php-js-pipeline` |
 
-## Установка
+Структура одного пайплайна:
+
+```text
+pipelines/<name>/
+  agents/
+  commands/
+  rules/
+  plugins/local/<plugin>/
+```
+
+## Установка в текущий Cursor
 
 Из корня репо:
 
-**Windows (PowerShell):**
-
 ```powershell
-.\install.ps1
+.\install.ps1 php-js
 ```
-
-**macOS / Linux:**
 
 ```bash
-chmod +x install.sh
-./install.sh
+chmod +x install.sh sync-from-cursor.sh
+./install.sh php-js
 ```
 
-Скрипт копирует файлы в `~/.cursor/` (`agents`, `commands`, `rules`, `plugins/local/global-dev-rules`).
+Аргумент — имя папки в `pipelines/`. Скрипт копирует содержимое в `~/.cursor/` (`agents`, `commands`, `rules`, `plugins/local/...`).
 
-После установки: **Developer: Reload Window**, проверь `/php-js-pipeline` и роли в Customize.
+После: **Developer: Reload Window**.
 
-## Обновление с другой машины
+Без аргумента скрипт покажет список доступных пайплайнов.
 
-```bash
-git pull
-# Windows: .\install.ps1
-# Unix:    ./install.sh
-```
-
-Чтобы забрать правки обратно в репо после ручных правок в `~/.cursor`:
+## Забрать правки из Cursor обратно в репо
 
 ```powershell
-.\sync-from-cursor.ps1   # Windows
-./sync-from-cursor.sh    # Unix
-git status
+.\sync-from-cursor.ps1 php-js
 ```
+
+```bash
+./sync-from-cursor.sh php-js
+```
+
+Синхронизируются только файлы/плагины, которыми владеет этот пайплайн (по именам в `pipelines/<name>/`).
 
 ## Что не входит
 
-- User Rules из Cursor Settings (аккаунт) — их нужно перенести отдельно.
-- Project `.cursor/` внутри конкретных репозиториев — это другой слой (для CLI/Cloud).
+- User Rules из Cursor Settings (аккаунт)
+- Project `.cursor/` внутри рабочих репозиториев
 
-## Использование
+## Использование (php-js)
 
 ```text
 /php-js-pipeline <задача: фича или рефактор>
 ```
+
+Роли: `architecture-analyst` → `implementer` → `tester` → `code-reviewer`
